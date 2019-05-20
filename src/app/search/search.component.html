@@ -1,0 +1,36 @@
+
+<div class="row mb-5">
+  <div class="col-12">
+    <h1 class="h1">SEARCH FOR YOUR STREAM</h1>
+  </div>
+</div>
+<div class="row mb-5">
+  <div class="input-group input-group-sm ">
+    <div class="col-8">
+      <input type="text" placeholder="Search..." #inputSearch (keyup)="searchStreamsInput(inputSearch.value)"
+        class="form-control">
+    </div>
+    <div class="col-4">
+      <select class="custom-select" #selectResults (change)="filterResultsByLimit(selectResults.value)" name="" id="">
+        <option selected value="20">How many streams?</option>
+        <option value="3">3</option>
+        <option value="6">6</option>
+        <option value="12">12</option>
+        <option value="24">24</option>
+        <option value="48">48</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <a class="card-link-box col-lg-4 col-md-6 col-sm-12 mb-5" *ngFor="let stream of streams" [routerLink]="['video', stream.channel._id]">
+    <img [src]="stream.preview.large" [alt]="stream.game" class="card-img-top" >
+    <div class="card-body">
+      <h5 class="card-title">{{stream.game}}</h5>
+      <p class="card-text">{{stream.channel.status}}</p>
+    </div>
+  </a>
+</div>
+<div *ngIf="!streams.length && inputSearch.value !== ''" class="d-flex justify-content-center">
+  <app-loading></app-loading>
+</div>

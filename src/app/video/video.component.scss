@@ -1,0 +1,21 @@
+@import '../../assets/scss/variables';
+
+.video {
+  color: $white;
+}
+
+.img-logo {
+  max-width: 100px;
+}
+
+.link-back {
+  color: $purple;
+  background-color: $white;
+  text-transform: uppercase;
+  font-size: 2rem;
+  margin-top: 1rem;
+  svg {
+    margin-top: -6px;
+    fill: $purple;
+  }
+}

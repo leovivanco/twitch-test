@@ -12,7 +12,7 @@ export class SearchItemsService {
   streamsComplete: Observable<Stream[]>;
 
   getSreams() {
-    return this.streamsComplete
+    return this.streamsComplete;
   }
 
   searchStreams(query: string, limit: number): Observable<Stream[]> {
@@ -26,13 +26,13 @@ export class SearchItemsService {
       .pipe(
         retry(5),
         map((resp: any) => resp.streams)
-      )
+      );
   }
   async searchVideo(id:number){
     const headers = new HttpHeaders({
       'Accept': 'application/vnd.twitchtv.v5+json',
       'Client-ID': 'gitfhflgweofmdosbjnmukrns1ukbj'
-    })
+    });
     return this.http.get(`${API.urlVideo + id}`, { headers })
       .toPromise()
       .then((resp: any) => resp.stream)
